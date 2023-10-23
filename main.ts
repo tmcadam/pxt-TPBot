@@ -293,6 +293,38 @@ namespace TPBot {
         }
     }
     /**
+    * Setting the direction and time of travel.
+    * @param direc Left wheel speed , eg: DriveDirection.Forward
+    * @param speed Travel time, eg: 100
+    */
+    //% weight=95
+    //% block="Go %direc at speed %speed\\% for %time seconds - 1"
+    //% speed.min=0 speed.max=100
+    //% direc.fieldEditor="gridpicker" direc.fieldOptions.columns=2
+    export function setTravelTime1(direc: DriveDirection, speed: number, time: number): void {
+        if (direc == 0) {
+            setWheels(speed, speed)
+            basic.pause(time * 1000)
+            stopCar()
+        }
+        if (direc == 1) {
+            setWheels(-speed, -speed)
+            basic.pause(time * 1000)
+            stopCar()
+        }
+        if (direc == 2) {
+            setWheels(-speed, speed)
+            basic.pause(time * 1000)
+            stopCar()
+        }
+        if (direc == 3) {
+            setWheels(speed, -speed)
+            basic.pause(time * 1000)
+            stopCar()
+        }
+    }
+
+    /**
     * Setting the direction and speed of travel.
     * @param direc Left wheel speed , eg: DriveDirection.Forward
     * @param speed Travel time, eg: 100
